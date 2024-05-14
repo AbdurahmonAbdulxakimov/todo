@@ -1,5 +1,5 @@
 # name of our workflow
-name: Django CI/CD Workflow
+name: CD Workflow
 
 on:
   push:
