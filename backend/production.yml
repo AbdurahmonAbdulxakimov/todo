@@ -17,7 +17,7 @@ services:
       - production_django_media:/app/todo/media
     depends_on:
       - postgres
-#      - redis
+      - redis
     env_file:
       - ./.env
 #      - ./.envs/.production/.django
@@ -46,27 +46,27 @@ services:
     volumes:
       - production_traefik:/etc/traefik/acme
     ports:
-      - '0.0.0.0:80:80'
+      # - '0.0.0.0:80:80'
       - '0.0.0.0:443:443'
       - '0.0.0.0:5555:5555'
 
-#  redis:
-#    image: redis:6
-#
-#  celeryworker:
-#    <<: *django
-#    image: todo_production_celeryworker
-#    command: /start-celeryworker
-#
-#  celerybeat:
-#    <<: *django
-#    image: todo_production_celerybeat
-#    command: /start-celerybeat
-#
-#  flower:
-#    <<: *django
-#    image: todo_production_flower
-#    command: /start-flower
+  redis:
+    image: redis:6
+
+  celeryworker:
+    <<: *django
+    image: todo_production_celeryworker
+    command: /start-celeryworker
+
+  celerybeat:
+    <<: *django
+    image: todo_production_celerybeat
+    command: /start-celerybeat
+
+  flower:
+    <<: *django
+    image: todo_production_flower
+    command: /start-flower
 
   nginx:
     build:
