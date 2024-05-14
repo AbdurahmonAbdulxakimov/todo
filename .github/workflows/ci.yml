@@ -23,4 +23,3 @@ jobs:
           script: >
             cd ${{ secrets.PROJECT_PATH }} 
             && git pull 
-            && docker-compose -f backend/pruduction.yml up -d --build
