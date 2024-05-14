@@ -23,3 +23,4 @@ jobs:
           script: >
             cd ${{ secrets.PROJECT_PATH }} 
             && git pull 
+            && docker-compose -f backend/local.yml up
